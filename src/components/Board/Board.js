@@ -5,11 +5,12 @@ import HeaderBar from "../HeaderBar/HeaderBar";
 
 const BoardElement = styled.div`
   block-size: 50rem;
-  inline-size: 83.3rem;
+  inline-size: 85.3rem;
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
   justify-content: flex-start;
+  gap: 2px;
  
 `;
 
