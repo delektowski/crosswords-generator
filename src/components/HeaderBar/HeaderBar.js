@@ -13,6 +13,9 @@ const Container = styled.div`
   block-size: 3rem;
   align-items: center;
   justify-content: space-between;
+  @media print {
+    display: none;
+  }
 `;
 
 const HeaderBar = () => {

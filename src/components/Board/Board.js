@@ -10,7 +10,7 @@ const BoardElement = styled.div`
   flex-wrap: wrap;
   align-content: flex-start;
   justify-content: flex-start;
-  gap: 1px;
+ 
 `;
 
 export const CurrentSquareIdContext = React.createContext({});

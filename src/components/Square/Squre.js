@@ -28,6 +28,10 @@ const SquareInput = styled.input`
   &:focus {
     background: rgba(211, 211, 211, 0.42);
   }
+  &:disabled,
+  :focus {
+    background: transparent;
+  }
 `;
 
 const Square = ({ id }) => {
@@ -59,8 +63,9 @@ const Square = ({ id }) => {
   return (
     <div style={{ borderCollapse: "collapse" }}>
       <SquareElement letter={letter} isClearSq={isClearSq}>
-        <SquareNumber />
+        <SquareNumber isClearSq={isClearSq} />
         <SquareInput
+          disabled={isClearSq}
           ref={inputRef}
           onChange={handleInput}
           value={letter}

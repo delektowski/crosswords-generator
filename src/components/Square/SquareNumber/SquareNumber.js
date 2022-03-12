@@ -24,9 +24,13 @@ const Number = styled.input`
   &:focus {
     background: rgba(211, 211, 211, 0.42);
   }
+  &:disabled,
+  :focus {
+    background: transparent;
+  }
 `;
 
-const SquareNumber = () => {
+const SquareNumber = ({ isClearSq }) => {
   const [number, setNumber] = useState("");
   function handleInput(e) {
     const value = e.target.value;
@@ -35,7 +39,7 @@ const SquareNumber = () => {
 
   return (
     <SmallSquare>
-      <Number maxLength="2" onChange={handleInput} value={number} />
+      <Number disabled={isClearSq} maxLength="2" onChange={handleInput} value={number} />
     </SmallSquare>
   );
 };
