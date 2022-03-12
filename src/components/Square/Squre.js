@@ -12,7 +12,6 @@ const SquareElement = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-  
 `;
 
 const SquareInput = styled.input`
@@ -55,7 +54,7 @@ const Square = ({ id }) => {
     if (id === squareId) {
       inputRef.current.focus();
     }
-  }, [squareId, id]);
+  }, [squareId, id, isVertical]);
 
   return (
     <div style={{ borderCollapse: "collapse" }}>
