@@ -13,8 +13,12 @@ function App() {
   const [isClearLtr, setIsClearLtr] = useState(false);
   const [scale, setScale] = useState(1);
 
-  console.log("data", data);
-
+  useEffect(() => {
+    const crossWordData = JSON.parse(localStorage.getItem("crossWordData"));
+    if (crossWordData && crossWordData.length === 416) {
+      setData(crossWordData);
+    }
+  }, []);
   useEffect(() => {
     localStorage.setItem("crossWordData", JSON.stringify(data));
   }, [data]);
@@ -37,7 +41,7 @@ function App() {
     >
       <div className="App">
         <HeaderBar />
-        <Board />
+        <Board crossWordData={data} />
       </div>
     </CurrentSquareIdContext.Provider>
   );

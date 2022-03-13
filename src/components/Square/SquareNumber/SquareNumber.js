@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import styled from "styled-components";
 
 const SmallSquare = styled.div`
@@ -30,11 +29,10 @@ const Number = styled.input`
   }
 `;
 
-const SquareNumber = ({ isClearSq }) => {
-  const [number, setNumber] = useState("");
+const SquareNumber = ({ isClearSq, sqNumber, setSqNumber }) => {
   function handleInput(e) {
     const value = e.target.value;
-    setNumber(value);
+    setSqNumber(value);
   }
 
   return (
@@ -43,7 +41,7 @@ const SquareNumber = ({ isClearSq }) => {
         disabled={isClearSq}
         maxLength="2"
         onChange={handleInput}
-        value={number}
+        value={sqNumber}
       />
     </SmallSquare>
   );

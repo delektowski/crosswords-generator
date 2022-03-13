@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import styled from "styled-components";
 import Square from "../Square/Squre";
 import { CurrentSquareIdContext } from "../../App";
@@ -19,14 +19,18 @@ const BoardElement = styled.div`
   }
 `;
 
-const Board = () => {
+const Board = ({ crossWordData }) => {
   const { scale } = useContext(CurrentSquareIdContext);
+  const [squares, setSquares] = useState([...Array(416)]);
 
+  useEffect(() => {
+      setSquares(crossWordData)
+  },[crossWordData])
   return (
     <>
       <BoardElement scale={scale}>
-        {[...Array(416)].map((value, index) => {
-          return <Square id={index} key={index} />;
+        {squares.map((data, index) => {
+          return <Square id={index} key={index} localStorageValue={data} />;
         })}
       </BoardElement>
     </>
