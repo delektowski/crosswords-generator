@@ -25,8 +25,12 @@ const Button = styled.button`
 const ButtonScale = () => {
   const { setScale, scale } = useContext(CurrentSquareIdContext);
 
+  function isScaleLimit(isMagnified) {
+    return (scale === 1 && isMagnified) || scale < 0.6;
+  }
+
   function handleScale(isMagnified) {
-    if ((scale === 1 && isMagnified) || scale < 0.6) {
+    if (isScaleLimit(isMagnified)) {
       return;
     }
 

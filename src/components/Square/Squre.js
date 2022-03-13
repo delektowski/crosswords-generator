@@ -19,6 +19,9 @@ const SquareInput = styled.input`
   inline-size: 2rem;
   font-size: 1.4rem;
   text-transform: uppercase;
+  font-weight: ${({ isString, letter }) => {
+    return isString(letter) ? 100 : 600;
+  }};
   color: black;
   text-align: center;
   outline: none;
@@ -35,15 +38,35 @@ const SquareInput = styled.input`
 `;
 
 const Square = ({ id }) => {
-  const [letter, setLetter] = useState("");
+  const [value, setValue] = useState("");
   const { squareId, setSquareId, isVertical, isClearSq, isClearLtr } =
     useContext(CurrentSquareIdContext);
   const inputRef = useRef(null);
+
+  function isString(value) {
+    return isNaN(+value);
+  }
+
+  function handleString(value) {
+    const lastValue = value[value.length - 1];
+    setValue(lastValue);
+    handleNextFocusedElement();
+  }
+
+  function handleNumber(value) {
+    if (value.length > 2) {
+      value = value[value.length - 1];
+    }
+    setValue(value);
+  }
+
   function handleInput(e) {
     const value = e.target.value;
-    const lastValue = value[value.length - 1];
-    setLetter(lastValue);
-    handleNextFocusedElement();
+    if (isString(value)) {
+      handleString(value);
+    } else {
+      handleNumber(value);
+    }
   }
 
   function handleNextFocusedElement() {
@@ -62,14 +85,16 @@ const Square = ({ id }) => {
 
   return (
     <div style={{ borderCollapse: "collapse" }}>
-      <SquareElement letter={letter} isClearSq={isClearSq}>
+      <SquareElement letter={value} isClearSq={isClearSq}>
         <SquareNumber isClearSq={isClearSq} />
         <SquareInput
           disabled={isClearSq}
           ref={inputRef}
           onChange={handleInput}
-          value={letter}
+          value={value}
           isClearLtr={isClearLtr}
+          letter={value}
+          isString={isString}
         />
       </SquareElement>
     </div>
