@@ -21,11 +21,12 @@ const BoardElement = styled.div`
 
 const Board = () => {
   const { scale } = useContext(CurrentSquareIdContext);
+
   return (
     <>
       <BoardElement scale={scale}>
         {[...Array(416)].map((value, index) => {
-          return <Square id={index + 1} key={index} />;
+          return <Square id={index} key={index} />;
         })}
       </BoardElement>
     </>
