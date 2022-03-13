@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { CurrentSquareIdContext } from "../../Board/Board";
-import DirectionArrow from "../../DirectionArrow/DirectionArrow";
+import { CurrentSquareIdContext } from "../../Board";
+import DirectionArrow from "./DirectionArrow/DirectionArrow";
 
 const Container = styled.div`
   display: flex;
@@ -14,7 +14,7 @@ const Container = styled.div`
 
 const Button = styled.button`
   padding-inline: 1rem;
-  padding-block: 0.8rem;
+  padding-block: 0.5rem;
   inline-size: 7rem;
   background: ${({ isVertical }) => (isVertical ? "#006400" : "#be0032")};
   color: white;

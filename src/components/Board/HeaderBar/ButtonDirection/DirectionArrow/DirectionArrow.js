@@ -26,7 +26,8 @@ const Arrow = styled.div`
     width: 70%;
     height: 7px;
     right: -8px;
-    background-color: ${({ isVertical }) => (isVertical ? "#006400" : "#be0032")};
+    background-color: ${({ isVertical }) =>
+      isVertical ? "#006400" : "#be0032"};
   }
   &:after {
     top: -4px;

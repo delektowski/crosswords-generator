@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { CurrentSquareIdContext } from "../../Board/Board";
+import { CurrentSquareIdContext } from "../../Board";
 
 const Button = styled.button`
   padding-inline: 1rem;
-  padding-block: 0.8rem;
-  inline-size: 7rem;
+  padding-block: 0.5rem;
+  inline-size: 8.5rem;
   background: darkslategrey;
   color: white;
   border-radius: 6px;
@@ -22,7 +22,9 @@ const ButtonClearSq = () => {
 
   return (
     <div>
-      <Button onClick={handleClear}>{isClearSq ? "przywróć kratki" : "czyść kratki"}</Button>
+      <Button onClick={handleClear}>
+        {isClearSq ? "przywróć kratki" : "czyść kratki"}
+      </Button>
     </div>
   );
 };

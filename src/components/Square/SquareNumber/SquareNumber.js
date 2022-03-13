@@ -39,7 +39,12 @@ const SquareNumber = ({ isClearSq }) => {
 
   return (
     <SmallSquare>
-      <Number disabled={isClearSq} maxLength="2" onChange={handleInput} value={number} />
+      <Number
+        disabled={isClearSq}
+        maxLength="2"
+        onChange={handleInput}
+        value={number}
+      />
     </SmallSquare>
   );
 };

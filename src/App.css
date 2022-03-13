@@ -1,8 +1,9 @@
 .App {
   text-align: center;
-  padding: 10px 50px;
+  padding: 0 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  position: relative;
 }
