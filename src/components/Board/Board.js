@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import Square from "../Square/Squre";
+import { CurrentSquareIdContext } from "../../App";
 
 const BoardElement = styled.div`
   margin-block-start: 4rem;
@@ -18,37 +19,15 @@ const BoardElement = styled.div`
   }
 `;
 
-export const CurrentSquareIdContext = React.createContext({});
-
 const Board = () => {
-  const [squareId, setSquareId] = useState(null);
-  const [isVertical, setIsVertical] = useState(true);
-  const [isClearSq, setIsClearSq] = useState(false);
-  const [isClearLtr, setIsClearLtr] = useState(false);
-  const [scale, setScale] = useState(1);
-  console.log("scale", scale);
+  const { scale } = useContext(CurrentSquareIdContext);
   return (
     <>
-      <CurrentSquareIdContext.Provider
-        value={{
-          squareId,
-          setSquareId,
-          isVertical,
-          setIsVertical,
-          isClearSq,
-          setIsClearSq,
-          isClearLtr,
-          setIsClearLtr,
-          setScale,
-          scale,
-        }}
-      >
-        <BoardElement scale={scale}>
-          {[...Array(416)].map((value, index) => {
-            return <Square id={index + 1} key={index} />;
-          })}
-        </BoardElement>
-      </CurrentSquareIdContext.Provider>
+      <BoardElement scale={scale}>
+        {[...Array(416)].map((value, index) => {
+          return <Square id={index + 1} key={index} />;
+        })}
+      </BoardElement>
     </>
   );
 };

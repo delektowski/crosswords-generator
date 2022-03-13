@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { CurrentSquareIdContext } from "../../Board";
+import { CurrentSquareIdContext } from "../../../../App";
 
 const Button = styled.button`
   padding-inline: 1rem;

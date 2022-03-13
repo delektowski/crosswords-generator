@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { CurrentSquareIdContext } from "../Board/Board";
 import SquareNumber from "./SquareNumber/SquareNumber";
+import { CurrentSquareIdContext } from "../../App";
 
 const SquareElement = styled.div`
   inline-size: 3rem;

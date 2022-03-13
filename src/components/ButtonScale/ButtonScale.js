@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
-import { CurrentSquareIdContext } from "../Board/Board";
+
 import styled from "styled-components";
+import { CurrentSquareIdContext } from "../../App";
 
 const Container = styled.div`
   display: flex;
