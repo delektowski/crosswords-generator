@@ -37,8 +37,9 @@ const SquareInput = styled.input`
   }
 `;
 
-const Square = ({ id }) => {
+const Square = ({ id, localStorageValue }) => {
   const [value, setValue] = useState("");
+  const [sqNumber, setSqNumber] = useState("");
 
   const { squareId, setSquareId, isVertical, isClearSq, isClearLtr, setData } =
     useContext(CurrentSquareIdContext);
@@ -87,6 +88,17 @@ const Square = ({ id }) => {
   }
 
   useEffect(() => {
+    if (
+      localStorageValue !== undefined &&
+      localStorageValue.value !== "" &&
+      localStorageValue.id === id
+    ) {
+      setValue(localStorageValue.value);
+      setSqNumber(localStorageValue.sqNumber);
+    }
+  }, [localStorageValue, id]);
+
+  useEffect(() => {
     if (id === squareId) {
       inputRef.current.focus();
     }
@@ -95,20 +107,24 @@ const Square = ({ id }) => {
   useEffect(() => {
     setData((prev) => {
       if (prev && prev.length < 416) {
-        return prev.concat({ value, id });
+        return prev.concat({ value, id, sqNumber });
       }
       const copyPrev = [...prev];
       copyPrev[id].value = value;
+      copyPrev[id].sqNumber = sqNumber;
 
       return copyPrev;
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value, id, isVertical]);
+  }, [value, id, sqNumber, setData]);
 
   return (
     <div style={{ borderCollapse: "collapse" }}>
       <SquareElement letter={value} isClearSq={isClearSq}>
-        <SquareNumber isClearSq={isClearSq} />
+        <SquareNumber
+          isClearSq={isClearSq}
+          sqNumber={sqNumber}
+          setSqNumber={setSqNumber}
+        />
         <SquareInput
           onFocus={handleFocus}
           onClick={handleOnClick}
