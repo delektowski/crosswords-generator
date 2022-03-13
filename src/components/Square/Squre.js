@@ -39,7 +39,8 @@ const SquareInput = styled.input`
 
 const Square = ({ id }) => {
   const [value, setValue] = useState("");
-  const { squareId, setSquareId, isVertical, isClearSq, isClearLtr } =
+
+  const { squareId, setSquareId, isVertical, isClearSq, isClearLtr, setData } =
     useContext(CurrentSquareIdContext);
   const inputRef = useRef(null);
 
@@ -77,17 +78,40 @@ const Square = ({ id }) => {
     setSquareId(id + 26);
   }
 
+  function handleFocus() {
+    setValue("");
+  }
+
+  function handleOnClick() {
+    setSquareId(id);
+  }
+
   useEffect(() => {
     if (id === squareId) {
       inputRef.current.focus();
     }
   }, [squareId, id, isVertical]);
 
+  useEffect(() => {
+    setData((prev) => {
+      if (prev && prev.length < 416) {
+        return prev.concat({ value, id });
+      }
+      const copyPrev = [...prev];
+      copyPrev[id].value = value;
+
+      return copyPrev;
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value, id, isVertical]);
+
   return (
     <div style={{ borderCollapse: "collapse" }}>
       <SquareElement letter={value} isClearSq={isClearSq}>
         <SquareNumber isClearSq={isClearSq} />
         <SquareInput
+          onFocus={handleFocus}
+          onClick={handleOnClick}
           disabled={isClearSq}
           ref={inputRef}
           onChange={handleInput}

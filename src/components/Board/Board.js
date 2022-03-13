@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, {useContext, useEffect} from "react";
 import styled from "styled-components";
 import Square from "../Square/Squre";
 import { CurrentSquareIdContext } from "../../App";
@@ -21,11 +21,15 @@ const BoardElement = styled.div`
 
 const Board = () => {
   const { scale } = useContext(CurrentSquareIdContext);
+
+  useEffect(() => {
+
+  },[])
   return (
     <>
       <BoardElement scale={scale}>
         {[...Array(416)].map((value, index) => {
-          return <Square id={index + 1} key={index} />;
+          return <Square id={index} key={index} />;
         })}
       </BoardElement>
     </>
