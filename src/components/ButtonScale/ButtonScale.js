@@ -26,8 +26,7 @@ const ButtonScale = () => {
   const { setScale, scale } = useContext(CurrentSquareIdContext);
 
   function handleScale(isMagnified) {
-    console.log("scale23", scale);
-    if (scale === 1 && isMagnified) {
+    if ((scale === 1 && isMagnified) || scale < 0.6) {
       return;
     }
 
@@ -35,7 +34,6 @@ const ButtonScale = () => {
       setScale((prevState) => +prevState + 0.1);
       return;
     }
-    console.log("koza");
     setScale((prevState) => +prevState - 0.1);
   }
   return (
