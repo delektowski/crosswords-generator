@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import Square from "../Square/Squre";
 import { CurrentSquareIdContext } from "../../App";
@@ -22,9 +22,6 @@ const BoardElement = styled.div`
 const Board = () => {
   const { scale } = useContext(CurrentSquareIdContext);
 
-  useEffect(() => {
-
-  },[])
   return (
     <>
       <BoardElement scale={scale}>
