@@ -20,6 +20,9 @@ const Button = styled.button`
   justify-content: center;
   align-items: center;
   border: none;
+  &:nth-child(2) {
+    padding-block-end: 5px;
+  }
 `;
 
 const ButtonScale = () => {
