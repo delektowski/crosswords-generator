@@ -71,12 +71,31 @@ const Square = ({ id, localStorageValue }) => {
     }
   }
 
+  function handleOnKeyUp(e) {
+    const { key } = e;
+    if (key === "Delete") {
+      handleNextFocusedElement();
+    }
+
+    if (key === "Backspace") {
+      handlePreviousFocusedElement();
+    }
+  }
+
   function handleNextFocusedElement() {
     if (isVertical) {
       setSquareId(id + 1);
       return;
     }
     setSquareId(id + 26);
+  }
+
+  function handlePreviousFocusedElement() {
+    if (isVertical) {
+      setSquareId(id - 1);
+      return;
+    }
+    setSquareId(id - 26);
   }
 
   function handleFocus() {
@@ -128,6 +147,7 @@ const Square = ({ id, localStorageValue }) => {
         <SquareInput
           onFocus={handleFocus}
           onClick={handleOnClick}
+          onKeyUp={handleOnKeyUp}
           disabled={isClearSq}
           ref={inputRef}
           onChange={handleInput}
