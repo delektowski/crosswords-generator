@@ -14,11 +14,14 @@ const SmallSquare = styled.div`
 `;
 
 const Number = styled.input`
-  font-size: 0.8rem;
+  position: relative;
+  top: .1rem;
+  left: .1rem;
+  font-size: 0.75rem;
   outline: none;
   border: none;
   inline-size: 90%;
-  block-size: 80%;
+  block-size: 76%;
   &:hover,
   &:focus {
     background: rgba(211, 211, 211, 0.42);

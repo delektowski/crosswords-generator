@@ -5,8 +5,10 @@ import { CurrentSquareIdContext } from "../../App";
 
 const BoardElement = styled.div`
   margin-block-start: 4rem;
-  block-size: 50rem;
-  inline-size: 85.3rem;
+  padding-top: 1rem;
+  block-size: 100vh;
+  inline-size: 104rem;
+  overflow: auto;
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
@@ -21,7 +23,7 @@ const BoardElement = styled.div`
 
 const Board = ({ crossWordData }) => {
   const { scale } = useContext(CurrentSquareIdContext);
-  const [squares, setSquares] = useState([...Array(416)]);
+  const [squares, setSquares] = useState([...Array(700)]);
 
   useEffect(() => {
       setSquares(crossWordData)
