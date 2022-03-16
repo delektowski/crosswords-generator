@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import React from "react";
 
 const SmallSquare = styled.div`
   margin-inline-start: 0.2rem;
@@ -15,8 +16,8 @@ const SmallSquare = styled.div`
 
 const Number = styled.input`
   position: relative;
-  top: .1rem;
-  left: .1rem;
+  top: 0.1rem;
+  left: 0.1rem;
   font-size: 0.75rem;
   outline: none;
   border: none;
@@ -38,6 +39,7 @@ const SquareNumber = ({ isClearSq, sqNumber, setSqNumber }) => {
     setSqNumber(value);
   }
 
+    console.log('numerb')
   return (
     <SmallSquare>
       <Number
@@ -50,4 +52,4 @@ const SquareNumber = ({ isClearSq, sqNumber, setSqNumber }) => {
   );
 };
 
-export default SquareNumber;
+export default React.memo(SquareNumber);

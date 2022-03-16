@@ -24,7 +24,7 @@ const Square = ({ id, localStorageValue }) => {
   const [sqNumber, setSqNumber] = useState("");
 
   const { isClearSq, setData } = useContext(CurrentSquareIdContext);
-
+  // console.log('render')
   useEffect(() => {
     if (
       localStorageValue !== undefined &&
@@ -63,4 +63,4 @@ const Square = ({ id, localStorageValue }) => {
   );
 };
 
-export default Square;
+export default React.memo(Square);
