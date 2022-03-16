@@ -6,7 +6,6 @@ import { CurrentSquareIdContext } from "../../App";
 const BoardElement = styled.div`
   margin-block-start: 4rem;
   padding-top: 1rem;
-  block-size: 100vh;
   inline-size: 104rem;
   overflow: auto;
   display: flex;
