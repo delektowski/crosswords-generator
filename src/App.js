@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     const crossWordData = JSON.parse(localStorage.getItem("crossWordData"));
-    if (crossWordData && crossWordData.length === 416) {
+    if (crossWordData && crossWordData.length === 700) {
       setData(crossWordData);
     }
   }, []);
