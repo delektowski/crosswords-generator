@@ -14,7 +14,8 @@ const StyledSquareInput = styled.input`
   text-align: center;
   outline: none;
   border: none;
-  display: ${({ isClearLtr }) => (isClearLtr ? "none" : "block")};
+  display: ${({ isClearLtr, isString, letter }) =>
+    isClearLtr && isString(letter) ? "none" : "block"};
   &:hover,
   &:focus {
     background: rgba(211, 211, 211, 0.42);
@@ -26,6 +27,8 @@ const StyledSquareInput = styled.input`
 `;
 
 const SquareInput = ({ id, value, setValue }) => {
+  const columnsNumber = 35;
+  const oneColumn = 1;
   const { squareId, setSquareId, isVertical, isClearSq, isClearLtr } =
     useContext(CurrentSquareIdContext);
   const inputRef = useRef(null);
@@ -59,18 +62,18 @@ const SquareInput = ({ id, value, setValue }) => {
 
   function handleNextFocusedElement() {
     if (isVertical) {
-      setSquareId(id + 1);
+      setSquareId(id + oneColumn);
       return;
     }
-    setSquareId(id + 35);
+    setSquareId(id + columnsNumber);
   }
 
   function handlePreviousFocusedElement() {
     if (isVertical) {
-      setSquareId(id - 1);
+      setSquareId(id - oneColumn);
       return;
     }
-    setSquareId(id - 35);
+    setSquareId(id - columnsNumber);
   }
 
   function isString(value) {
